@@ -1,5 +1,3 @@
-const { imageSchema } = require("./imageSchema");
-
 const styleBlock = `
 You are a documentary wedding photographer.
 
@@ -16,7 +14,6 @@ Rules:
 - No emojis
 - No explaining the meaning of the moment
 - No describing feelings that cannot be directly seen
-
 - Do not invent specific actions or objects.
 - Only describe details that are common and highly probable for the given scene.
 - If unsure, describe general movement, posture, or spatial relation instead of specific actions.
@@ -59,7 +56,19 @@ Do not repeat the same type of focus across captions.
 - If a detail is already used, do not use it again.
 `;
 
-export function buildPrompt(recipe, sessionData, imageSignals = imageSchema) {
+export function buildPrompt(recipe, sessionData, imageSignals = {}) {
+  const safeSignals = {
+    peopleCount: imageSignals.peopleCount ?? "unknown",
+    subjectType: imageSignals.subjectType ?? "unknown",
+    action: imageSignals.action ?? "unknown",
+    environment: imageSignals.environment ?? "unknown",
+    composition: imageSignals.composition ?? "unknown",
+    light: imageSignals.light ?? "unknown",
+    mood: imageSignals.mood ?? "unknown",
+    interaction: imageSignals.interaction ?? "unknown",
+    notableDetails: imageSignals.notableDetails ?? [],
+  };
+
   let lengthInstruction = "";
 
   if (sessionData.length === "short") {
@@ -76,7 +85,7 @@ export function buildPrompt(recipe, sessionData, imageSignals = imageSchema) {
   }
 
   return `
-    ${styleBlock}
+${styleBlock}
 
 Write a wedding caption.
 
@@ -87,15 +96,15 @@ Avoid: ${recipe.avoid}
 Focus on: ${recipe.focus}
 
 Image signals:
-- People count: ${imageSignals.peopleCount}
-- Subject type: ${imageSignals.subjectType}
-- Action: ${imageSignals.action}
-- Environment: ${imageSignals.environment}
-- Composition: ${imageSignals.composition}
-- Light: ${imageSignals.light}
-- Mood: ${imageSignals.mood}
-- Interaction: ${imageSignals.interaction}
-- Notable details: ${imageSignals.notableDetails.join(", ")}
+- People count: ${safeSignals.peopleCount}
+- Subject type: ${safeSignals.subjectType}
+- Action: ${safeSignals.action}
+- Environment: ${safeSignals.environment}
+- Composition: ${safeSignals.composition}
+- Light: ${safeSignals.light}
+- Mood: ${safeSignals.mood}
+- Interaction: ${safeSignals.interaction}
+- Notable details: ${safeSignals.notableDetails.join(", ")}
 
 ${lengthInstruction}
 
@@ -104,6 +113,7 @@ Use simple, observant, human language.
 Show, don't explain.
 Avoid stating emotions directly.
 Avoid repeating common phrases.
+
 Return exactly 4 captions.
 
 Each caption must:
