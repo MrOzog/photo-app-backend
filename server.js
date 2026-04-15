@@ -19,18 +19,9 @@ const supabase = createClient(
   process.env.SUPABASE_ANON_KEY,
 );
 
-// 🚀 API
-
 app.post("/generate", async (req, res) => {
   try {
     const sessionData = req.body;
-
-    const recipe = buildRecipe(sessionData);
-    const finalPrompt = buildPrompt(
-      recipe,
-      sessionData,
-      sessionData.imageSignals,
-    );
 
     const visionResponse = await openai.responses.create({
       model: "gpt-4.1-mini",
@@ -52,9 +43,8 @@ app.post("/generate", async (req, res) => {
       ],
     });
 
-    console.log("VISION:", visionResponse.output_text);
-
     const visionText = visionResponse.output_text;
+    console.log("VISION:", visionText);
 
     const signalsResponse = await openai.responses.create({
       model: "gpt-4.1-mini",
@@ -110,6 +100,9 @@ ${visionText}
 
     console.log("PARSED IMAGE SIGNALS:", parsedImageSignals);
 
+    const recipe = buildRecipe(sessionData);
+    const finalPrompt = buildPrompt(recipe, sessionData, parsedImageSignals);
+
     const response = await openai.responses.create({
       model: "gpt-4.1-mini",
       input: finalPrompt,
@@ -118,11 +111,10 @@ ${visionText}
     console.log("OPENAI RESPONSE RECEIVED");
 
     const outputText = response.output?.[0]?.content?.[0]?.text;
-
     console.log("OUTPUT TEXT:", outputText);
 
     console.log("SAVING TO DB:", sessionData);
-    const { data, error } = await supabase.from("photographers").insert([
+    const { error } = await supabase.from("photographers").insert([
       {
         input_text: JSON.stringify(sessionData),
         output_text: outputText,
@@ -133,7 +125,6 @@ ${visionText}
       console.error("DB ERROR:", error);
     }
 
-    // 🔹 odpowiedź do frontendu
     console.log("SENDING RESPONSE TO FRONTEND");
     res.json({
       caption: outputText,
