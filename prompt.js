@@ -48,7 +48,9 @@ Choose ONE focus per caption:
 
 Do not repeat the same type of focus across captions.
 - If multiple captions are generated, each must feel like it describes a different photograph from the same session.
-
+- Do not reuse the same visual elements across captions (e.g. grass, shadows, light, walking).
+- Each caption must introduce at least one new visual detail not used in the others.
+- If a detail is already used, do not use it again.
 `;
 
 export function buildPrompt(recipe, sessionData) {
