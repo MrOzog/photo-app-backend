@@ -35,6 +35,9 @@ Avoid phrases like:
 - "softly around them"
 
 The caption should feel understated, visual, and specific.
+- Each caption should focus on a different detail or moment.
+- Do not repeat the same elements (e.g. shadows, breeze, dress) unless truly necessary.
+- Vary perspective: sometimes focus on movement, sometimes on distance, sometimes on interaction.
 `;
 
 export function buildPrompt(recipe, sessionData) {
