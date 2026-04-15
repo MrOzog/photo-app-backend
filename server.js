@@ -32,8 +32,11 @@ app.post("/generate", async (req, res) => {
       model: "gpt-4.1-mini",
       input: finalPrompt,
     });
+    console.log("OPENAI RESPONSE RECEIVED");
 
-    const outputText = response.output[0].content[0].text;
+    const outputText = response.output?.[0]?.content?.[0]?.text;
+
+    console.log("OUTPUT TEXT:", outputText);
 
     console.log("SAVING TO DB:", sessionData);
     const { data, error } = await supabase
@@ -50,6 +53,7 @@ app.post("/generate", async (req, res) => {
     }
 
 // 🔹 odpowiedź do frontendu
+console.log("SENDING RESPONSE TO FRONTEND");
 res.json({
   caption: outputText
 });
