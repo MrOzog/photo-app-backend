@@ -54,6 +54,11 @@ app.post("/generate", async (req, res) => {
 
     console.log("VISION:", visionResponse.output_text);
 
+    const response = await openai.responses.create({
+      model: "gpt-4.1-mini",
+      input: finalPrompt,
+    });
+
     console.log("OPENAI RESPONSE RECEIVED");
 
     const outputText = response.output?.[0]?.content?.[0]?.text;
