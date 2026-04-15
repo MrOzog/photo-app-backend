@@ -32,10 +32,26 @@ app.post("/generate", async (req, res) => {
       sessionData.imageSignals
     );
 
-    const response = await openai.responses.create({
+    const visionResponse = await openai.responses.create({
       model: "gpt-4.1-mini",
-      input: finalPrompt,
+      input: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "input_text",
+              text: "Describe this image in simple, factual terms.",
+            },
+            {
+              type: "input_image",
+              image_url: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486",
+            },
+          ],
+        },
+      ],
     });
+
+console.log("VISION:", visionResponse.output_text);
     console.log("OPENAI RESPONSE RECEIVED");
 
     const outputText = response.output?.[0]?.content?.[0]?.text;
