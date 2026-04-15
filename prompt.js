@@ -113,6 +113,9 @@ Use simple, observant, human language.
 Show, don't explain.
 Avoid stating emotions directly.
 Avoid repeating common phrases.
+Only use details that appear in the image signals above.
+Do not introduce weather, movement, gestures, or actions unless they are explicitly present in the image signals.
+If the subject is decor or detail, keep the caption focused on visible objects and arrangement.
 
 Return exactly 4 captions.
 
