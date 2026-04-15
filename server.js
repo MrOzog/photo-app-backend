@@ -16,7 +16,7 @@ const openai = new OpenAI({
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
+  process.env.SUPABASE_ANON_KEY,
 );
 
 // 🚀 API
@@ -29,7 +29,7 @@ app.post("/generate", async (req, res) => {
     const finalPrompt = buildPrompt(
       recipe,
       sessionData,
-      sessionData.imageSignals
+      sessionData.imageSignals,
     );
 
     const visionResponse = await openai.responses.create({
@@ -44,14 +44,16 @@ app.post("/generate", async (req, res) => {
             },
             {
               type: "input_image",
-              image_url: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486",
+              image_url:
+                "https://images.unsplash.com/photo-1522673607200-164d1b6ce486",
             },
           ],
         },
       ],
     });
 
-console.log("VISION:", visionResponse.output_text);
+    console.log("VISION:", visionResponse.output_text);
+
     console.log("OPENAI RESPONSE RECEIVED");
 
     const outputText = response.output?.[0]?.content?.[0]?.text;
@@ -59,25 +61,22 @@ console.log("VISION:", visionResponse.output_text);
     console.log("OUTPUT TEXT:", outputText);
 
     console.log("SAVING TO DB:", sessionData);
-    const { data, error } = await supabase
-    .from("photographers")
-    .insert([
-        {
+    const { data, error } = await supabase.from("photographers").insert([
+      {
         input_text: JSON.stringify(sessionData),
         output_text: outputText,
-        },
+      },
     ]);
 
     if (error) {
-    console.error("DB ERROR:", error);
+      console.error("DB ERROR:", error);
     }
 
-// 🔹 odpowiedź do frontendu
-console.log("SENDING RESPONSE TO FRONTEND");
-res.json({
-  caption: outputText
-});
-
+    // 🔹 odpowiedź do frontendu
+    console.log("SENDING RESPONSE TO FRONTEND");
+    res.json({
+      caption: outputText,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Something went wrong" });
