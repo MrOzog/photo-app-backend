@@ -26,7 +26,11 @@ app.post("/generate", async (req, res) => {
     const sessionData = req.body;
 
     const recipe = buildRecipe(sessionData);
-    const finalPrompt = buildPrompt(recipe, sessionData);
+    const finalPrompt = buildPrompt(
+      recipe,
+      sessionData,
+      sessionData.imageSignals
+    );
 
     const response = await openai.responses.create({
       model: "gpt-4.1-mini",

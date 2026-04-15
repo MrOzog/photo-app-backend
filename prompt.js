@@ -1,3 +1,5 @@
+const { imageSchema } = require("./imageSchema");
+
 const styleBlock = `
 You are a documentary wedding photographer.
 
@@ -57,7 +59,7 @@ Do not repeat the same type of focus across captions.
 - If a detail is already used, do not use it again.
 `;
 
-export function buildPrompt(recipe, sessionData) {
+export function buildPrompt(recipe, sessionData, imageSignals = imageSchema) {
   let lengthInstruction = "";
 
   if (sessionData.length === "short") {
@@ -83,6 +85,17 @@ Setting: ${recipe.setting}
 Action: ${recipe.action}
 Avoid: ${recipe.avoid}
 Focus on: ${recipe.focus}
+
+Image signals:
+- People count: ${imageSignals.peopleCount}
+- Subject type: ${imageSignals.subjectType}
+- Action: ${imageSignals.action}
+- Environment: ${imageSignals.environment}
+- Composition: ${imageSignals.composition}
+- Light: ${imageSignals.light}
+- Mood: ${imageSignals.mood}
+- Interaction: ${imageSignals.interaction}
+- Notable details: ${imageSignals.notableDetails.join(", ")}
 
 ${lengthInstruction}
 
