@@ -87,5 +87,17 @@ Use simple, observant, human language.
 Show, don't explain.
 Avoid stating emotions directly.
 Avoid repeating common phrases.
+Return exactly 4 captions.
+
+Each caption must:
+- be clearly different
+- focus on a different subject
+- not reuse the same main elements
+
+Label them as:
+Caption 1:
+Caption 2:
+Caption 3:
+Caption 4:
 `;
 }
