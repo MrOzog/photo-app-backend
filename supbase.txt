@@ -1,0 +1,3 @@
+URL = https://eflkuhurskxiwwwblvik.supabase.co
+
+anon public - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVmbGt1aHVyc2t4aXd3d2JsdmlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxOTM5ODQsImV4cCI6MjA5MTc2OTk4NH0.xCoBa_tBFKNNQuOJjSiWBuMILIKDV_e9WyYYC8Lk6BY
