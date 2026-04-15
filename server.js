@@ -54,6 +54,49 @@ app.post("/generate", async (req, res) => {
 
     console.log("VISION:", visionResponse.output_text);
 
+    const visionText = visionResponse.output_text;
+
+    const signalsResponse = await openai.responses.create({
+      model: "gpt-4.1-mini",
+      input: `
+Convert the description below into a JSON object.
+
+Return valid JSON only.
+No markdown.
+No explanation.
+
+Use this shape:
+{
+  "peopleCount": null,
+  "subjectType": "",
+  "action": "",
+  "environment": "",
+  "composition": "",
+  "light": "",
+  "mood": "",
+  "interaction": "",
+  "notableDetails": []
+}
+
+Description:
+${visionText}
+`,
+    });
+
+    const rawSignals = signalsResponse.output_text;
+    console.log("RAW IMAGE SIGNALS:", rawSignals);
+
+    let parsedImageSignals = {};
+
+    try {
+      parsedImageSignals = JSON.parse(rawSignals);
+    } catch (e) {
+      console.error("IMAGE SIGNALS PARSE ERROR:", e);
+      parsedImageSignals = {};
+    }
+
+    console.log("PARSED IMAGE SIGNALS:", parsedImageSignals);
+
     const response = await openai.responses.create({
       model: "gpt-4.1-mini",
       input: finalPrompt,
