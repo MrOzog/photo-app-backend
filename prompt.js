@@ -38,6 +38,17 @@ The caption should feel understated, visual, and specific.
 - Each caption should focus on a different detail or moment.
 - Do not repeat the same elements (e.g. shadows, breeze, dress) unless truly necessary.
 - Vary perspective: sometimes focus on movement, sometimes on distance, sometimes on interaction.
+- Each caption must focus on a different aspect of the scene.
+
+Choose ONE focus per caption:
+- physical interaction (hands, distance between people)
+- movement (walking, direction, pace)
+- environment (space, landscape, weather)
+- detail (clothing, gesture, small moment)
+
+Do not repeat the same type of focus across captions.
+- If multiple captions are generated, each must feel like it describes a different photograph from the same session.
+
 `;
 
 export function buildPrompt(recipe, sessionData) {
