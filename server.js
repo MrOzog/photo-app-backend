@@ -65,7 +65,7 @@ Return valid JSON only.
 No markdown.
 No explanation.
 
-Use this shape:
+Use exactly this shape:
 {
   "peopleCount": null,
   "subjectType": "",
@@ -77,6 +77,19 @@ Use this shape:
   "interaction": "",
   "notableDetails": []
 }
+
+Rules:
+- peopleCount = number of visible people, or 0 if none
+- subjectType must be one of: "couple", "group", "single", "detail", "decor", "unknown"
+- action must be simple and visual, e.g. "walking", "standing", "hugging", "talking", "looking", "static", "unknown"
+- environment must be short and factual
+- composition must be one of: "wide", "medium", "close", "detail", "unknown"
+- light must be simple and visual, e.g. "soft", "harsh", "backlit", "overcast", "indoor warm", "natural daylight", "unknown"
+- mood must be one of: "quiet", "joyful", "intimate", "formal", "playful", "romantic", "calm", "unknown"
+- interaction must be one of: "touching", "close", "apart", "eye contact", "no contact", "none", "unknown"
+- notableDetails must contain 0 to 5 short factual visual details
+- if the image shows objects or scene details rather than people, use subjectType = "detail" or "decor"
+- do not invent anything not clearly visible
 
 Description:
 ${visionText}
