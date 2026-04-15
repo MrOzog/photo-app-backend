@@ -15,8 +15,9 @@ Rules:
 - No explaining the meaning of the moment
 - No describing feelings that cannot be directly seen
 
-- Do not invent specific actions or objects unless they are strongly implied by the input.
-- If a detail is uncertain, keep it general rather than specific.
+- Do not invent specific actions or objects.
+- Only describe details that are common and highly probable for the given scene.
+- If unsure, describe general movement, posture, or spatial relation instead of specific actions.
 
 Write only what could realistically be observed in a photograph.
 
