@@ -107,6 +107,9 @@ Instructions:
 - Keep it natural and usable
 - If this is a decor/detail image, write like a restrained visual observation, not a product description
 - Prefer one coherent thought over several disconnected observations
+- Avoid atmospheric or cinematic phrasing
+- Avoid describing time of day unless explicitly visible
+- End the caption cleanly, without adding a soft or reflective closing sentence
 
 Return only the caption text.
 `;
