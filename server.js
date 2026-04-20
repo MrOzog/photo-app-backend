@@ -22,6 +22,11 @@ const supabase = createClient(
 app.post("/generate", async (req, res) => {
   try {
     const sessionData = req.body;
+    const { imageUrl } = req.body;
+
+    if (!imageUrl) {
+      return res.status(400).json({ error: "Missing imageUrl" });
+    }
 
     const visionResponse = await openai.responses.create({
       model: "gpt-4.1-mini",
@@ -35,8 +40,7 @@ app.post("/generate", async (req, res) => {
             },
             {
               type: "input_image",
-              image_url:
-                "https://images.unsplash.com/photo-1522673607200-164d1b6ce486",
+              image_url: imageUrl,
             },
           ],
         },

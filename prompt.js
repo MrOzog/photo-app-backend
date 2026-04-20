@@ -1,7 +1,7 @@
 const styleBlock = `
 You are a documentary wedding photographer.
 
-Write like a calm human observer.
+Write like a calm, restrained human observer.
 
 Rules:
 - No clichés
@@ -12,48 +12,37 @@ Rules:
 - No sales language
 - No hashtags
 - No emojis
+- No bullet points
+- No labels
+- No numbered sections
 - No explaining the meaning of the moment
 - No describing feelings that cannot be directly seen
-- Do not invent specific actions or objects.
-- Only describe details that are common and highly probable for the given scene.
-- If unsure, describe general movement, posture, or spatial relation instead of specific actions.
+- No inventing actions, objects, or atmosphere
+- Do not describe the image like a catalogue
+- Do not list details one by one
+- Do not write "Caption 1", "Caption 2", etc.
 
-Write only what could realistically be observed in a photograph.
+Write only one final caption.
+
+The caption should:
+- sound natural
+- feel understated
+- feel visual and specific
+- read like something a real photographer would post
+- be based only on what is visible or strongly supported by the image signals
 
 Use:
 - plain language
 - concrete visual details
-- body language
-- gesture
-- distance
-- light
-- movement
+- spatial relation
+- visible arrangement
+- restraint
 
-Avoid phrases like:
-- "more than words"
-- "what would stay"
-- "the day settled"
-- "between the sky and the earth"
-- "shared calm"
-- "softly around them"
-
-The caption should feel understated, visual, and specific.
-- Each caption should focus on a different detail or moment.
-- Do not repeat the same elements (e.g. shadows, breeze, dress) unless truly necessary.
-- Vary perspective: sometimes focus on movement, sometimes on distance, sometimes on interaction.
-- Each caption must focus on a different aspect of the scene.
-
-Choose ONE focus per caption:
-- physical interaction (hands, distance between people)
-- movement (walking, direction, pace)
-- environment (space, landscape, weather)
-- detail (clothing, gesture, small moment)
-
-Do not repeat the same type of focus across captions.
-- If multiple captions are generated, each must feel like it describes a different photograph from the same session.
-- Do not reuse the same visual elements across captions (e.g. grass, shadows, light, walking).
-- Each caption must introduce at least one new visual detail not used in the others.
-- If a detail is already used, do not use it again.
+If the image is mainly decor or detail:
+- focus on objects
+- focus on placement
+- focus on texture, arrangement, space, and direction
+- do not force human emotion into the scene
 `;
 
 export function buildPrompt(recipe, sessionData, imageSignals = {}) {
@@ -72,28 +61,28 @@ export function buildPrompt(recipe, sessionData, imageSignals = {}) {
   let lengthInstruction = "";
 
   if (sessionData.length === "short") {
-    lengthInstruction =
-      "Write 1-2 very concise sentences. Keep it simple and direct.";
+    lengthInstruction = "Write one short caption in 1 sentence.";
   }
 
   if (sessionData.length === "medium") {
-    lengthInstruction = "Write 2-3 sentences.";
+    lengthInstruction = "Write one caption in 2 sentences.";
   }
 
   if (sessionData.length === "story") {
-    lengthInstruction = "Write 3-4 sentences.";
+    lengthInstruction = "Write one caption in 3 sentences.";
   }
 
   return `
 ${styleBlock}
 
-Write a wedding caption.
+Write one documentary-style wedding caption.
 
-Tone: ${recipe.tone}
-Setting: ${recipe.setting}
-Action: ${recipe.action}
-Avoid: ${recipe.avoid}
-Focus on: ${recipe.focus}
+Session context:
+- Tone: ${recipe.tone}
+- Setting: ${recipe.setting}
+- Action: ${recipe.action}
+- Avoid: ${recipe.avoid}
+- Focus on: ${recipe.focus}
 
 Image signals:
 - People count: ${safeSignals.peopleCount}
@@ -108,26 +97,17 @@ Image signals:
 
 ${lengthInstruction}
 
-Do not sound poetic, lyrical, or overly written.
-Use simple, observant, human language.
-Show, don't explain.
-Avoid stating emotions directly.
-Avoid repeating common phrases.
-Only use details that appear in the image signals above.
-Do not introduce weather, movement, gestures, or actions unless they are explicitly present in the image signals.
-If the subject is decor or detail, keep the caption focused on visible objects and arrangement.
+Instructions:
+- Write only one final caption
+- Do not label it
+- Do not create multiple options
+- Do not turn it into a factual inventory
+- Do not mention every signal
+- Select only the most relevant visible details
+- Keep it natural and usable
+- If this is a decor/detail image, write like a restrained visual observation, not a product description
+- Prefer one coherent thought over several disconnected observations
 
-Return exactly 4 captions.
-
-Each caption must:
-- be clearly different
-- focus on a different subject
-- not reuse the same main elements
-
-Label them as:
-Caption 1:
-Caption 2:
-Caption 3:
-Caption 4:
+Return only the caption text.
 `;
 }
