@@ -112,6 +112,8 @@ Instructions:
 - Avoid atmospheric or cinematic phrasing
 - Avoid describing time of day unless explicitly visible
 - End the caption cleanly, without adding a soft or reflective closing sentence
+- Do not introduce any object, flower, plant, color, texture, or background element unless it is explicitly present in the image signals
+- If a detail is uncertain, leave it out
 
 Return only the caption text.
 `;
