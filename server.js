@@ -5,6 +5,11 @@ import cors from "cors";
 import { buildRecipe } from "./recipe.js";
 import { buildPrompt } from "./prompt.js";
 import { createClient } from "@supabase/supabase-js";
+import multer from "multer";
+
+const upload = multer({
+  storage: multer.memoryStorage(),
+});
 
 const app = express();
 app.use(cors());
@@ -19,14 +24,11 @@ const supabase = createClient(
   process.env.SUPABASE_ANON_KEY,
 );
 
-app.post("/generate", async (req, res) => {
+app.post("/generate", upload.single("image"), async (req, res) => {
   try {
-    const sessionData = req.body;
+    console.log("BODY:", req.body);
     const { imageUrl } = req.body;
-
-    if (!imageUrl) {
-      return res.status(400).json({ error: "Missing imageUrl" });
-    }
+    const sessionData = req.body;
 
     const visionResponse = await openai.responses.create({
       model: "gpt-4.1-mini",
