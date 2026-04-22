@@ -118,12 +118,16 @@ Instructions:
 - Use the strongest clearly visible expression (e.g. laughing, crying)
 
 - Do not assume age
-- Do not describe relationships or positioning unless clearly visible
+- Do not describe relationships or spatial positioning unless clearly visible in the frame
 
 - Avoid atmospheric, cinematic, or evaluative language
 - Do not explain visual importance (e.g. "focal point", "draws attention")
 - Do not describe time of day unless explicitly visible
 - End the caption cleanly without reflective or stylistic closing
+
+- Do not describe actions unless they are clearly visible in a single frame
+- Do not describe the image itself (e.g. "the image is", "the photo shows")
+- Avoid vague terms like "various", "some", "several" — be specific or omit
 
 Return only the caption text.
 `;
