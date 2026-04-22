@@ -122,6 +122,9 @@ Instructions:
 - Do not soften or tone down visible expressions (e.g. laughter must not become a smile)
 - Use the strongest clearly visible expression (e.g. laughing, shouting, crying)
 - Do not replace strong expressions with neutral ones
+- Do not soften or tone down visible expressions (e.g. laughter must not become a smile)
+- Use the strongest clearly visible expression (e.g. laughing, shouting, crying)
+- Do not replace strong expressions with neutral ones
 
 Return only the caption text.
 `;
