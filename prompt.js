@@ -107,18 +107,19 @@ Instructions:
 - Keep it natural, simple, and usable
 - Prefer one coherent thought over several disconnected observations
 
-- Do not introduce any object, color, texture, or background element unless it is explicitly present in the image signals
+- Do not introduce objects, colors, textures, or background elements unless they are clearly visible in the image or supported by the image signals
 - If a detail is uncertain, leave it out
 
-- Do not interpret meaning, relationships, or symbolism
-- Do not suggest themes or narratives
+- You may describe emotional context or human interaction if it is clearly supported by visible gesture, expression, or body language
+- Prefer describing the moment between people when the frame clearly shows emotion, contact, or response
+- Do not invent themes, backstory, or narrative meaning that is not visually supported
 - Do not summarize or describe the overall scene
 
 - Do not soften or tone down visible expressions
 - Use the strongest clearly visible expression (e.g. laughing, crying)
 
 - Do not assume age
-- Do not describe relationships or spatial positioning unless clearly visible in the frame
+- Do not describe relationships, interaction, or spatial positioning unless they are clearly visible in the frame
 
 - Avoid atmospheric, cinematic, or evaluative language
 - Do not explain visual importance (e.g. "focal point", "draws attention")
