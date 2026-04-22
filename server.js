@@ -27,7 +27,13 @@ const supabase = createClient(
 app.post("/generate", upload.single("image"), async (req, res) => {
   try {
     console.log("BODY:", req.body);
-    const { imageUrl } = req.body;
+    const file = req.file;
+
+    if (!file) {
+      return res.status(400).json({ error: "Missing image file" });
+    }
+
+    const base64Image = file.buffer.toString("base64");
     const sessionData = req.body;
 
     const visionResponse = await openai.responses.create({
@@ -42,7 +48,7 @@ app.post("/generate", upload.single("image"), async (req, res) => {
             },
             {
               type: "input_image",
-              image_url: imageUrl,
+              image_url: `data:${file.mimetype};base64,${base64Image}`,
             },
           ],
         },
