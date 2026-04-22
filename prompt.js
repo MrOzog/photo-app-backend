@@ -117,6 +117,11 @@ Instructions:
 - Do not explain the visual importance of elements (e.g. "focal point", "draws attention", "stands out")
 - Do not summarize the scene
 - Do not describe the overall scene (no phrases like "the scene is", "the setting is", "this moment is")
+- Do not interpret relationships, meaning, or symbolism
+- Do not suggest themes like "generations", "past and present", or emotional narratives
+- Do not soften or tone down visible expressions (e.g. laughter must not become a smile)
+- Use the strongest clearly visible expression (e.g. laughing, shouting, crying)
+- Do not replace strong expressions with neutral ones
 
 Return only the caption text.
 `;
