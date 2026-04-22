@@ -115,6 +115,8 @@ Instructions:
 - Do not introduce any object, flower, plant, color, texture, or background element unless it is explicitly present in the image signals
 - If a detail is uncertain, leave it out
 - Do not explain the visual importance of elements (e.g. "focal point", "draws attention", "stands out")
+- Do not summarize the scene
+- Do not describe the overall scene (no phrases like "the scene is", "the setting is", "this moment is")
 
 Return only the caption text.
 `;
