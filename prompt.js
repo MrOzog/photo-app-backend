@@ -101,32 +101,29 @@ ${lengthInstruction}
 
 Instructions:
 - Write only one final caption
-- Do not label it
-- Do not create multiple options
+- Do not label it or create multiple options
 - Do not turn it into a factual inventory
-- Do not mention every signal
 - Select only the most relevant visible details
-- Keep it natural and usable
-- If this is a decor/detail image, write like a restrained visual observation, not a product description
+- Keep it natural, simple, and usable
 - Prefer one coherent thought over several disconnected observations
-- Avoid atmospheric or cinematic phrasing
-- Avoid describing time of day unless explicitly visible
-- End the caption cleanly, without adding a soft or reflective closing sentence
-- Do not introduce any object, flower, plant, color, texture, or background element unless it is explicitly present in the image signals
+
+- Do not introduce any object, color, texture, or background element unless it is explicitly present in the image signals
 - If a detail is uncertain, leave it out
-- Do not explain the visual importance of elements (e.g. "focal point", "draws attention", "stands out")
-- Do not summarize the scene
-- Do not describe the overall scene (no phrases like "the scene is", "the setting is", "this moment is")
-- Do not interpret relationships, meaning, or symbolism
-- Do not suggest themes like "generations", "past and present", or emotional narratives
-- Do not soften or tone down visible expressions (e.g. laughter must not become a smile)
-- Use the strongest clearly visible expression (e.g. laughing, shouting, crying)
-- Do not replace strong expressions with neutral ones
-- Do not soften or tone down visible expressions (e.g. laughter must not become a smile)
-- Use the strongest clearly visible expression (e.g. laughing, shouting, crying)
-- Do not replace strong expressions with neutral ones
-- Do not assume age (avoid words like "young", "old", "elderly")
-- Do not describe relationships or relative positioning unless clearly visible in the frame
+
+- Do not interpret meaning, relationships, or symbolism
+- Do not suggest themes or narratives
+- Do not summarize or describe the overall scene
+
+- Do not soften or tone down visible expressions
+- Use the strongest clearly visible expression (e.g. laughing, crying)
+
+- Do not assume age
+- Do not describe relationships or positioning unless clearly visible
+
+- Avoid atmospheric, cinematic, or evaluative language
+- Do not explain visual importance (e.g. "focal point", "draws attention")
+- Do not describe time of day unless explicitly visible
+- End the caption cleanly without reflective or stylistic closing
 
 Return only the caption text.
 `;
