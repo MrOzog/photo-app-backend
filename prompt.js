@@ -125,6 +125,8 @@ Instructions:
 - Do not soften or tone down visible expressions (e.g. laughter must not become a smile)
 - Use the strongest clearly visible expression (e.g. laughing, shouting, crying)
 - Do not replace strong expressions with neutral ones
+- Do not assume age (avoid words like "young", "old", "elderly")
+- Do not describe relationships or relative positioning unless clearly visible in the frame
 
 Return only the caption text.
 `;
