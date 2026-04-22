@@ -21,6 +21,8 @@ Rules:
 - Do not describe the image like a catalogue
 - Do not list details one by one
 - Do not write "Caption 1", "Caption 2", etc.
+- Do not describe contrast, mood, or visual effect
+- Do not evaluate the scene (no words like "beautiful", "fresh", "soft", "strong")
 
 Write only one final caption.
 
